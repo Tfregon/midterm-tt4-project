@@ -39,7 +39,7 @@ module.exports = {
         test: /\.(png|jpg|gif)$/,
         type: "asset/resource", // Para copiar arquivos de imagem
         generator: {
-          filename: 'assets/images/[name][hash][ext][query]', // Colocando as imagens dentro de assets/images/
+          filename: "assets/images/[name][ext]", // Colocando as imagens dentro de assets/images/
         },
       },
       {
