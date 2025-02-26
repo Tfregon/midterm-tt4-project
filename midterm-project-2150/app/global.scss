@@ -1,130 +1,81 @@
-/*
-    To optimize overall performance, only the essential elements for the website are being imported. 
-    Since you will be utilizing the Bootstrap Card styles, I recommend importing this specific 
-    component into your list-products.scss file. You can find it on line 35. Just copy the import and paste 
-    it into your file.
-*/
+// Use updated Bootstrap SCSS imports with @use
+@use "sass:math";
+@use "sass:color";
 
-// @import "./node_modules/bootstrap/scss/mixins/banner";
-// @include bsBanner("");
+// Import Bootstrap core SCSS files
+@use "bootstrap/scss/functions";
+@use "bootstrap/scss/variables";
+@use "bootstrap/scss/maps";
+@use "bootstrap/scss/mixins";
+@use "bootstrap/scss/utilities";
+@use "bootstrap/scss/root";
+@use "bootstrap/scss/reboot";
+@use "bootstrap/scss/type";
+@use "bootstrap/scss/images";
+@use "bootstrap/scss/containers";
+@use "bootstrap/scss/grid";
+@use "bootstrap/scss/forms";
+@use "bootstrap/scss/buttons";
+@use "bootstrap/scss/dropdown";
+@use "bootstrap/scss/button-group";
+@use "bootstrap/scss/nav";
+@use "bootstrap/scss/navbar";
+@use "bootstrap/scss/list-group";
+@use "bootstrap/scss/helpers";
+@use "bootstrap/scss/utilities/api";
 
-// scss-docs-start import-stack
-// Configuration
-@import "./node_modules/bootstrap/scss/functions";
-@import "./node_modules/bootstrap/scss/variables";
-@import "./node_modules/bootstrap/scss/variables-dark";
-@import "./node_modules/bootstrap/scss/maps";
-@import "./node_modules/bootstrap/scss/mixins";
-@import "./node_modules/bootstrap/scss/utilities";
-
-// Layout & components
-@import "./node_modules/bootstrap/scss/root";
-@import "./node_modules/bootstrap/scss/reboot";
-@import "./node_modules/bootstrap/scss/type";
-@import "./node_modules/bootstrap/scss/images";
-@import "./node_modules/bootstrap/scss/containers";
-@import "./node_modules/bootstrap/scss/grid";
-// @import "./node_modules/bootstrap/scss/tables";
-@import "./node_modules/bootstrap/scss/forms";
-@import "./node_modules/bootstrap/scss/buttons";
-// @import "./node_modules/bootstrap/scss/transitions";
-@import "./node_modules/bootstrap/scss/dropdown";
-@import "./node_modules/bootstrap/scss/button-group";
-@import "./node_modules/bootstrap/scss/nav";
-@import "./node_modules/bootstrap/scss/navbar";
-// @import "./node_modules/bootstrap/scss/card";
-// @import "./node_modules/bootstrap/scss/accordion";
-// @import "./node_modules/bootstrap/scss/breadcrumb";
-// @import "./node_modules/bootstrap/scss/pagination";
-// @import "./node_modules/bootstrap/scss/badge";
-// @import "./node_modules/bootstrap/scss/alert";
-// @import "./node_modules/bootstrap/scss/progress";
-@import "./node_modules/bootstrap/scss/list-group";
-// @import "./node_modules/bootstrap/scss/close";
-// @import "./node_modules/bootstrap/scss/toasts";
-// @import "./node_modules/bootstrap/scss/modal";
-// @import "./node_modules/bootstrap/scss/tooltip";
-// @import "./node_modules/bootstrap/scss/popover";
-// @import "./node_modules/bootstrap/scss/carousel";
-// @import "./node_modules/bootstrap/scss/spinners";
-// @import "./node_modules/bootstrap/scss/offcanvas";
-// @import "./node_modules/bootstrap/scss/placeholders";
-
-// Helpers
-@import "./node_modules/bootstrap/scss/helpers";
-
-// Utilities
-@import "./node_modules/bootstrap/scss/utilities/api";
-// scss-docs-end import-stack
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+// Ensure Bootstrap functions are updated
+@function new-unit($num) {
+  @return math.unit($num);
 }
 
-@font-face {
-    font-family: 'Roboto';
-    src: url('/assets/fonts/Roboto-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('/assets/fonts/Roboto-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-
+// Custom Styles
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa;
 }
-
 
 #wrapper {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
+// Sidebar
 #sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
 }
 
 #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 #sidebar-wrapper .list-group {
-    width: 15rem;
+  width: 15rem;
 }
 
+// Page Content
 #page-content-wrapper {
-    min-width: 100vw;
+  min-width: 100vw;
 }
 
 body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 @media (min-width: 768px) {
-    #sidebar-wrapper {
-        margin-left: 0;
-    }
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
 
-    #page-content-wrapper {
-        min-width: 0;
-        width: 100%;
-    }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
 
-    body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
-        margin-left: -15rem;
-    }
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
 }

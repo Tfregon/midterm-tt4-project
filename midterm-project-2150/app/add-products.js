@@ -1,27 +1,50 @@
-import './add-products.scss';
+document.addEventListener("DOMContentLoaded", function () {
+    const productForm = document.getElementById("productForm");
+    const productName = document.getElementById("productName");
+    const productPrice = document.getElementById("productPrice");
+    const productCategory = document.getElementById("productCategory");
+    const productImage = document.getElementById("productImage");
+    const previewImage = document.getElementById("previewImage");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("add-product-form");
+    // Image Preview Handler
+    productImage.addEventListener("change", function (event) {
+        const file = event.target.files[0];
 
-    form.addEventListener("submit", (event) => {
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                previewImage.classList.remove("d-none");
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewImage.src = "";
+            previewImage.classList.add("d-none");
+        }
+    });
+
+    // Form Submission
+    productForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const title = document.getElementById("product-title").value;
-        const description = document.getElementById("product-description").value;
-        const price = document.getElementById("product-price").value;
-        const image = document.getElementById("product-image").value;
+        if (productName.value.trim() === "" || productPrice.value === "" || productCategory.value === "") {
+            alert("Please fill in all required fields!");
+            return;
+        }
 
-        const newProduct = {
-            title,
-            description,
-            price: `$${price}`,
-            image
+        const productData = {
+            name: productName.value.trim(),
+            price: parseFloat(productPrice.value),
+            category: productCategory.value,
+            image: previewImage.src || "default-image.png"
         };
 
-        console.log("New Product Added:", newProduct);
+        console.log("Product Added:", productData);
         alert("Product added successfully!");
 
-        // Aqui você pode adicionar a lógica para salvar os dados na API
-        form.reset();
+        // Reset Form
+        productForm.reset();
+        previewImage.src = "";
+        previewImage.classList.add("d-none");
     });
 });

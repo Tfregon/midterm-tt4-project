@@ -1,12 +1,10 @@
 // index.scss
 
 // Dependencies
-@import "./node_modules/bootstrap/scss/functions";
-@import "./node_modules/bootstrap/scss/variables";
-@import "./node_modules/bootstrap/scss/mixins";
+@use "bootstrap/scss/functions";
+@use "bootstrap/scss/variables";
+@use "bootstrap/scss/mixins";
 
-// Card
-@import "./node_modules/bootstrap/scss/card";
-
-// Alert
-@import "./node_modules/bootstrap/scss/alert";
+// Bootstrap Components
+@use "bootstrap/scss/card";
+@use "bootstrap/scss/alert";
